@@ -19,7 +19,7 @@ export default function AdminNavBar() {
     localStorage.removeItem('isAdminLoggedIn');
     localStorage.removeItem('admin');
 
-    navigate('/home');
+    navigate('/');
     window.location.reload()
   };
   return (
