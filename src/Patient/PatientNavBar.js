@@ -6,6 +6,7 @@ import PatientHome from './PatientHome'
 import PatientProfile from './PatientProfile'
 import BookAppointment from './BookAppointment'
 import MyAppointments from './MyAppointments'
+import Home from '../Main/Home';
 
 
 import { useNavigate } from 'react-router-dom'
@@ -23,7 +24,7 @@ export default function PatientNavBar() {
     localStorage.removeItem('isPatientLoggedIn');
     localStorage.removeItem('patient');
 
-    navigate('/login');
+    navigate('/');
     window.location.reload()
   };
   return (
@@ -57,6 +58,7 @@ export default function PatientNavBar() {
         <Route path='/BookAppointment' Component={BookAppointment} exact/>
         <Route path='/MyAppointments' Component={MyAppointments} exact/>
         <Route path='/dietplan' Component={Dietplan} exact/>
+        <Route path='/' Component={Home}/>
         <Route path="*" element={<PageNotFound/>} exact />
         {/* <Route path='/home' Component={Home} exact/>
         <Route path='/login' Component={Login}/> */}

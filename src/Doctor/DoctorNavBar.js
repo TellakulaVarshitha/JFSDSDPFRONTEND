@@ -21,7 +21,7 @@ export default function DoctorNavBar() {
   const handleLogout = () => {
     localStorage.removeItem('isDoctorLoggedIn');
     localStorage.removeItem('doctor');
-    navigate('/home');
+    navigate('/');
     window.location.reload();
   };
 
@@ -64,7 +64,7 @@ export default function DoctorNavBar() {
         <Route path='/addprescription' element={<PrescriptionForm />} />
         <Route path='/viewprescriptions' element={<ViewPrescriptions />} />
         <Route path='/viewpatients' element={<ViewPatients/>} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/' Component={Home} />
         <Route path='/meetingform' element={<MeetingForm/>}/>
         <Route path='/approveappointments' element={<ApproveAppointments/>}/>
       </Routes>
