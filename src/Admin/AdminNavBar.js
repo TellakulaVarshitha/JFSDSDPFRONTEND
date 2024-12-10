@@ -52,9 +52,7 @@ export default function AdminNavBar() {
         <Route path='/adminhome' Component={AdminHome}  exact/>
         <Route path='/viewpatients' element={<ViewPatients/>} exact/>
         <Route path='/viewdoctors' element={<ViewDoctors/>} exact/>
-        {/* <Route path='/deletedoctor' element={<DeleteDoctor/>} exact/>
-        <Route path='/deletepatient' element={<DeletePatient/>} exact/> */}
-        <Route path='/home' element={<Home />} />
+        <Route path='/' Component={Home}/>
         <Route path="*" element={<PageNotFound/>} exact />
         
         
