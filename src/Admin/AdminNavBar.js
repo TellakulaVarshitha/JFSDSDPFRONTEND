@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import '../style.css'
 import { useNavigate } from 'react-router-dom'
-
+import Home from '../Main/Home';
 import PageNotFound from '../Main/PageNotFound'
 import AdminHome from './AdminHome'
 import ViewPatients from './ViewPatients'
@@ -54,6 +54,7 @@ export default function AdminNavBar() {
         <Route path='/viewdoctors' element={<ViewDoctors/>} exact/>
         {/* <Route path='/deletedoctor' element={<DeleteDoctor/>} exact/>
         <Route path='/deletepatient' element={<DeletePatient/>} exact/> */}
+        <Route path='/home' element={<Home />} />
         <Route path="*" element={<PageNotFound/>} exact />
         
         
