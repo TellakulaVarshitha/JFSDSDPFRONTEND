@@ -1,0 +1,109 @@
+/* CSS for Doctor Profile Component with Circular Image at the Top */
+.profile-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 300px;
+    margin: 80px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .profile-card .doctor-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: block;
+    border: 4px solid #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-card p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+  }
+  
+  .profile-card strong {
+    color: #000;
+  }
+  
+  /* Styling for error message */
+  .profile-card p[style*="color: red"] {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Additional styling for responsiveness */
+  @media (max-width: 400px) {
+    .profile-card {
+        width: 90%;
+        padding: 15px;
+    }
+  
+    .profile-card p {
+        font-size: 12px;
+    }
+  }
+  
+  /* Background styling with animated balls following the cursor */
+  body {
+    position: relative;
+    overflow: hidden;
+    background-color: #eaf2f8;
+  }
+  
+  .background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .ball {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #3498db;
+    border-radius: 50%;
+    animation: moveBall 15s linear infinite;
+  }
+  
+  @keyframes moveBall {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(calc(100vw - 10px), calc(100vh - 10px)); }
+  }
+  
+  
+  /* JavaScript (in HTML or React component) for cursor tracking */
+  /*
+  <script>
+    document.addEventListener('mousemove', (e) => {
+        const balls = document.querySelectorAll('.ball');
+        balls.forEach(ball => {
+            const x = e.clientX - ball.offsetWidth / 2;
+            const y = e.clientY - ball.offsetHeight / 2;
+            ball.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
+  </script>
+  */

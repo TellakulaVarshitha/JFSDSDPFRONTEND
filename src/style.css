@@ -1,0 +1,624 @@
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+
+  h2
+  {
+    color: #004080;
+  }
+  
+  /* Main container for header */
+  .header-container {
+    height: 60px; /* Adjust if your navbar height is different */
+    background-color: #003366; /* Navbar color */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  /* Header styling */
+  .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #004080;
+    color: #ffffff;
+  }
+  
+  /* Logo styling */
+  .app-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  /* Tagline below logo */
+  .tagline {
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin-top: 4px;
+    color: #ffffff;
+  }
+  
+  /* Navigation bar styling */
+  .nav-bar {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-bar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-bar a:hover {
+    color: #ffcc00;
+  }
+  /*sidebar*/
+ 
+
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    
+    .content {
+      margin-left: 100px;
+    }
+  }
+  /* Hero Section */
+  .home-container {
+    text-align: center;
+  }
+  
+  .hero-section {
+    background-color: #004080;
+    color: #ffffff;
+    padding: 90px 20px;
+    position: relative;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #ff9933;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #ffcc66;
+  }
+
+  .features {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    border-radius: 0px;
+  }
+  
+  .feature {
+    background-color: #f2f2f2; /* Removed background color */
+    padding: 10px;
+    border-radius: 10px;
+    flex-basis: 30%;
+  }
+  
+  .feature h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  .icon {
+    font-size: 3rem;
+    color: #004d99;
+  }
+  
+  
+  /* Contact Section */
+  .contact-section {
+    padding: 40px 20px;
+    background-color: #f2f2f2;
+  }
+  
+  .contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #004080;
+  }
+  
+  .contact-section p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #555555;
+  }
+  
+  .contact-details {
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .contact-details p {
+    margin: 8px 20;
+  }
+
+  .services-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px;
+    text-align: center;
+  }
+  .service-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Card styles */
+  .service-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 10px 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .service-card h3 {
+    color: #004080;
+    margin-bottom: 10px;
+  }
+  
+  .service-card p {
+    color: #333;
+  }
+  
+  
+  .login-section {
+    display: flex;
+    justify-content: center;        
+    align-items: center;            
+    flex-grow: 1;                  
+    padding: 80px;                  
+    min-height: 60vh;               
+  }
+  
+  .login-content {
+    text-align: center;     
+      
+  }
+  
+  /* Login Form Styles */
+  .login-form {
+    padding: 80px;                 
+    background-color: white;
+    border-radius: 10px;
+    max-width: 600px;               
+    width: 100%;                  
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button Styles */
+  .submit-button {
+    background-color: #003d66;      
+    color: white;                    
+    padding: 15px;                   
+    border: none;                    
+    border-radius: 5px;             
+    cursor: pointer;                 
+    transition: background-color 0.3s ease; 
+    width: 100%;                   
+  }
+  
+  /* Form Group Styles */
+  .form-group {
+    margin-bottom: 20px;            
+    text-align: left;               
+  }
+  
+  .form-group label {
+    display:inline-block;                  
+    font-size: 1rem;                
+    color: #004080;               
+    margin-bottom: 10px;            
+  }
+  
+  .form-group input {
+    width: 100%;                    
+    padding: 15px;                  
+    border: 1px solid #ccc;        
+    border-radius: 5px;            
+    font-size: 1rem;                
+  }
+  
+  /* Paragraph and Link Styles */
+  .signup-prompt {
+    margin-top: 18px;               
+    color: #333;                    
+  }
+
+  .signup-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #004080;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-button:hover {
+    color:#ffcc00;
+  }
+
+  /* Container for the toggle switch */
+.toggle-buttons {
+  position: relative;
+  display: flex;
+  height: 32px;
+  width: 300px;
+  margin: 20px auto;
+  background: #D7D7D7;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+/* Individual toggle button labels */
+.toggle-button {
+  flex: 1;
+  
+  text-align: center;
+  line-height: 32px;
+  font-weight: bold;
+  color: #676a6c;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+}
+
+/* Active toggle button color and transition */
+.toggle-button.active {
+  color: #FFF;
+}
+
+/* Slider background */
+.toggle-selector {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 32px;
+  border-radius: 32px;
+  background-color: #004080; /* Initial color for Patient */
+  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* Color changes for each toggle option */
+.toggle-button.patient-login.active ~ .toggle-selector {
+  transform: translateX(0%);
+  background-color: #004080; /* Green */
+}
+.toggle-button.doctor-login.active ~ .toggle-selector {
+  transform: translateX(100%);
+  background-color: #004080; /* Orange */
+}
+.toggle-button.admin-login.active ~ .toggle-selector {
+  transform: translateX(200%);
+  background-color: #004080; /* Red */
+}
+
+.logoutbutton
+{
+  background-color:#004080 ;
+  border: none;
+  font-size: 1rem;
+  color: #ffffff;
+
+}
+.logoutbutton:hover
+{
+  color:#ffcc00 ;
+  background-color: #003366; 
+}
+
+/*Signup css*/
+.signup-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+  padding-top: 130px;
+}
+
+.signup-wrapper {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.notification-message {
+  color: #d9534f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  color: #004080;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-actions {
+  margin-top: 20px;
+}
+
+.form-actions button {
+  background-color: #004080;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.form-actions button:hover {
+  background-color: #003366;
+  color: #ffcc00;
+}
+@media (max-width: 1024px) {
+  .signup-wrapper {
+    padding: 20px;
+    max-width: 80%;
+  }
+  
+  /* Reduce font size for labels and form fields */
+  .form-field label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-section {
+    padding: 20px;
+    min-height: 90vh;
+  }
+
+  .signup-wrapper {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .form-field label {
+    font-size: 0.85rem;
+  }
+
+  /* Adjust font size and padding for form elements */
+  .form-field input,
+  .form-field select {
+    padding: 8px;
+    font-size: 0.95rem;
+  }
+
+  .form-actions button {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-section {
+    padding: 15px;
+    min-height: 80vh;
+  }
+
+  .signup-wrapper {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .form-field label {
+    font-size: 0.8rem;
+  }
+
+  .form-field input,
+  .form-field select {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .form-actions button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+  
+  
+  
+  
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    /* Header */
+    .app-header {
+        padding: 10px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* Navbar links */
+    .nav-bar a {
+        font-size: 0.9rem;
+    }
+
+    /* Service cards to fit two per row */
+    .service-card {
+        width: 45%;
+    }
+}
+  
+@media (max-width: 768px) {
+  /* Header */
+  .app-header {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  /* Reduce sidebar width for mobile */
+  
+  
+  /* Content area margin adjustment */
+  .content {
+      margin-left: 100px; /* Match sidebar width */
+  }
+
+  /* Reduce font size for hero section */
+  .hero-section h1 {
+      font-size: 2rem;
+  }
+
+  /* Contact section title size */
+  .contact-section h2 {
+      font-size: 1.8rem;
+  }
+
+  /* Service cards to full width on mobile */
+  .service-card {
+      width: 100%;
+  }
+
+  /* Adjust login and signup form widths */
+  .login-form, .signup-wrapper {
+      padding: 20px;
+      max-width: 90%; /* Reduce form width on small screens */
+  }
+}
+  
+@media (max-width: 480px) {
+  /* Adjust header padding and logo size */
+  .app-header {
+      padding: 10px;
+      align-items: center;
+  }
+
+  /* Logo and tagline */
+  .app-logo {
+      font-size: 1.5rem;
+  }
+
+  .tagline {
+      font-size: 0.75rem;
+  }
+
+  /* Navbar link adjustments */
+  .nav-bar a {
+      font-size: 0.8rem;
+      padding: 5px;
+  }
+
+  /* Adjust hero section font sizes */
+  .hero-section h1 {
+      font-size: 1.8rem;
+  }
+
+  /* Contact section heading size */
+  .contact-section h2 {
+      font-size: 1.6rem;
+  }
+
+  /* Adjust service row layout */
+  .service-row {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  /* Full-width service cards on small screens */
+  .service-card {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  /* Toggle button adjustments for mobile */
+  .toggle-buttons {
+      width: 100%; /* Expand toggle buttons to full width */
+  }
+
+  /* Login and Signup forms */
+  .login-form, .signup-wrapper {
+      padding: 20px;
+      width: 100%;
+  }
+}

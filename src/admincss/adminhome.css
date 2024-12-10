@@ -1,0 +1,133 @@
+/* Base styles */
+.admin-home-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  /* Notification styles */
+  .notification {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: auto;
+    max-width: 400px;
+    margin: 10px auto;
+    text-align: center;
+  }
+  
+  
+  /* Pie chart container */
+  .pie-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center the chart horizontally */
+    width: 90%; /* Adjust width for responsiveness */
+    max-width: 500px; /* Restrict maximum width */
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 1150px;
+  }
+  
+  .pie-chart-container canvas {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Dashboard container */
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap to the next row on smaller screens */
+    justify-content: center; /* Center-align the boxes */
+    gap: 20px; /* Space between boxes */
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Styles for individual boxes */
+  .admin-appointments-list,
+  .admin-appointments-list2,
+  .admin-appointments-list3 {
+    flex: 1; /* Allow boxes to grow and take available space */
+    min-width: 200px; /* Set a minimum width for responsiveness */
+    max-width: 300px; /* Set a consistent max width */
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .admin-appointments-list h3,
+  .admin-appointments-list2 h3,
+  .admin-appointments-list3 h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 10px;
+  }
+  
+  .admin-appointments-list p,
+  .admin-appointments-list2 p,
+  .admin-appointments-list3 p {
+    font-size: 1rem;
+    color: #2c3e50;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .dashboard {
+      flex-direction: column; /* Stack boxes vertically on smaller screens */
+      align-items: center;
+    }
+  
+    .admin-appointments-list,
+    .admin-appointments-list2,
+    .admin-appointments-list3 {
+      max-width: 90%; /* Take most of the screen width */
+    }
+  
+    .notification {
+      font-size: 0.9rem;
+    }
+  
+    .pie-chart-container {
+      max-width: 90%; /* Adjust for smaller screens */
+      margin: 20px auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    .notification {
+      font-size: 0.8rem;
+      padding: 8px 16px;
+    }
+  
+    .admin-appointments-list h3,
+    .admin-appointments-list2 h3,
+    .admin-appointments-list3 h3 {
+      font-size: 1rem;
+    }
+  
+    .admin-appointments-list p,
+    .admin-appointments-list2 p,
+    .admin-appointments-list3 p {
+      font-size: 0.9rem;
+    }
+  }
+  

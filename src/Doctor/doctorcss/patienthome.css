@@ -1,0 +1,186 @@
+.doctor-home {
+    font-family: Arial, sans-serif;
+    margin-left: 260px;
+  }
+  
+  .welcome-container {
+    margin-bottom: 20px;
+    margin-left: 500px;
+    margin-top: 90px;
+  }
+  
+  .welcome-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .dashboard-content {
+    margin-top: 20px;
+  }
+  
+  .motivational-quote {
+    font-style: italic;
+    color: #7f8c8d;
+  }
+  
+  .appointments-list {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 50px;
+    margin-left: 250px;
+
+  }
+  .admin-appointments-list {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #2c3e50;
+   margin-bottom: 510px;
+    margin-left: 250px;
+
+  }
+
+  .admin-appointments-list2 {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #2c3e50;
+   margin-bottom: 510px;
+    margin-left: 650px;
+
+  }
+
+  .admin-appointments-list3 {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #2c3e50;
+   margin-bottom: 510px;
+    margin-left: 1050px;
+
+  }
+
+  
+  .appointments-list h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 15px;
+  }
+  
+  .appointments-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .appointments-list li {
+    margin-bottom: 10px;
+  }
+  
+  .appointments-list li p {
+    margin: 5px 0;
+  }
+  
+  .appointments-list li strong {
+    color: #2980b9;
+  }
+  
+  .appointments-list p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .appointments-list .no-appointments {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #e74c3c;
+    text-align: center;
+  }
+
+  /* Container for the Pie chart */
+/* Styles for Pie Chart */
+.chart-container {
+    width: 300px;       /* Set width to a smaller value */
+    height: 300px;      /* Set height to a smaller value */
+    margin: 0 auto;     /* Center the chart */
+    padding: 20px;      /* Optional padding to give space around the chart */
+  }
+  
+  
+  /* Optional styling for the chart title */
+  .chart-container h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive behavior for smaller screens */
+  @media (max-width: 768px) {
+    .chart-container {
+      width: 90%; /* Increase width on smaller screens */
+      height: 300px; /* Adjust height for smaller screens */
+    }
+  }
+  
+  .pie-chart-container {
+    width: 30%; /* Adjusted width for a medium-sized chart */
+    margin: 300px 0;
+    float: left; /* Aligns the pie chart to the left */
+    padding-left: 190px; /* Optional: Add left padding if needed */
+  }
+  .notification {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 13px;
+    position: relative;
+    z-index: 1000;
+    width: auto;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .bar-graph {
+    width: 40%; /* Adjust the width to control the graph size */
+    margin-left: auto; /* Push the graph to the right */
+    margin-right: 2%; /* Add some spacing from the right edge */
+    background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
+    padding: 10px; /* Optional: Add padding around the graph */
+    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better contrast */
+  }
