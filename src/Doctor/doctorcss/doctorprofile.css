@@ -10,7 +10,8 @@
     text-align: center;
     font-family: Arial, sans-serif;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   
   .profile-card .doctor-image {
@@ -107,3 +108,31 @@
     });
   </script>
   */
+
+  .profile-card-modern {
+    width: min(100%, 760px);
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 38px;
+    text-align: left;
+  }
+
+  .profile-card-modern h2 {
+    margin-bottom: 24px;
+    color: var(--teal-dark);
+    font-size: 2.3rem;
+  }
+
+  .profile-card-modern .doctor-image {
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    border: 5px solid var(--mint);
+  }
+
+  @media (max-width: 760px) {
+    .profile-card-modern {
+      width: 100%;
+      padding: 26px;
+    }
+  }

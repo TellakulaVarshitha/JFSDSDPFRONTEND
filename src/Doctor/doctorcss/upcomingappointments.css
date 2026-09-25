@@ -1,4 +1,4 @@
-/* upcommingappointments.css */
+/* Doctor appointment table refinements. */
 
 .upcoming-appointments {
     font-family: 'Arial', sans-serif;
@@ -175,5 +175,80 @@
   
   .filter-box select:focus {
     border-color: #007bff;
+  }
+
+  .table-container {
+    width: 100%;
+    max-width: none;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .appointment-table {
+    min-width: 900px;
+  }
+
+  .upcoming-appointments {
+    min-height: calc(100vh - 78px);
+    margin-left: 238px;
+    padding: 124px 42px 56px;
+    background: var(--paper);
+  }
+
+  .upcoming-appointments h1 {
+    margin-bottom: 10px;
+    color: var(--teal-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    text-align: left;
+  }
+
+  .upcoming-appointments .table-container {
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .upcoming-appointments .appointment-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .upcoming-appointments .appointment-table th,
+  .upcoming-appointments .appointment-table td {
+    padding: 12px 9px;
+    border-width: 0 0 1px;
+    border-color: var(--line);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    vertical-align: top;
+  }
+
+  .upcoming-appointments .appointment-table th {
+    background: var(--teal-dark);
+    color: white;
+    font-size: .72rem;
+  }
+
+  .upcoming-appointments .appointment-table td {
+    color: var(--muted);
+    font-size: .82rem;
+  }
+
+  @media screen and (max-width: 760px) {
+    .upcoming-appointments {
+      margin-left: 0;
+      padding: 170px 10px 36px;
+    }
+
+    .upcoming-appointments .appointment-table th,
+    .upcoming-appointments .appointment-table td {
+      padding: 8px 4px;
+      font-size: .68rem;
+    }
   }
   

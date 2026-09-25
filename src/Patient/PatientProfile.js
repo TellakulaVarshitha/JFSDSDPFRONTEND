@@ -69,47 +69,30 @@ export default function PatientProfile() {
   return (
     <div>
       {patientData ? (
-        <div className="profile-card">
+        <main className="profile-page">
+        <div className="profile-card profile-card-modern">
           <div className="profile-icon">
             {/* Show patient image if available, otherwise default icon */}
             {imageSrc ? (
-              <div
-              style={{
-                position: 'relative',
-                width: '250px',
-                height: '250px',
-                borderRadius: '50%',
-                overflow: 'hidden', // Keeps the image in a circle
-                display: 'inline-block',
-              }}
-            >
+              <div className="profile-photo">
               <img
                 src={imageSrc} className='profile_image'
-                alt="Profile" 
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover', // Ensures the image fits the circle
-                }}
+                alt="Profile"
               />
-            
-              {/* Pencil icon for changing the image */}
-              <button
-                onClick={() => fileInputRef.current.click()} // Trigger file input click when pencil is clicked
-                className="pencil-icon"
-              >
-                <i
-                  className="fas fa-pencil-alt"
-                  style={{
-                    fontSize: '30px',
-                    color: 'black',
-                  }}
-                ></i>
-              </button>
             </div>
             ) : (
               <div className="default-profile-icon">👤</div>
             )}
+          </div>
+
+          <div className="picture-actions">
+            <button
+              onClick={() => fileInputRef.current.click()}
+              className="picture-button"
+              aria-label="Add profile picture"
+            >
+              Add picture
+            </button>
           </div>
 
           {/* File input (hidden by default) */}
@@ -121,30 +104,12 @@ export default function PatientProfile() {
             style={{ display: 'none' }} // Hide the file input field
           />
 
-          {/* Display "Choose Image" button if no image is present */}
-          {!imageSrc && (
-            <div>
-              <button
-                onClick={() => fileInputRef.current.click()} // Trigger file input click
-                style={{
-                  padding: '10px 20px',
-                  backgroundColor: '#4CAF50',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
-              >
-                Choose Image
-              </button>
-            </div>
-          )}
-
           {/* Display messages */}
           {message && <p style={{ color: 'green' }}>{message}</p>}
           {error && <p style={{ color: 'red' }}>{error}</p>}
 
           {/* Patient Details */}
+          <p className="eyebrow">Patient profile</p>
           <h2>{patientData.name}</h2>
           <div className="profile-info">
             <p><span>Gender:</span> {patientData.gender}</p>
@@ -154,6 +119,7 @@ export default function PatientProfile() {
             <p><span>Address:</span> {patientData.location}</p>
           </div>
         </div>
+        </main>
       ) : (
         <p>Loading patient data...</p>
       )}

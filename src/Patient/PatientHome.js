@@ -49,37 +49,28 @@ export default function PatientHome() {
   }, [allAppointments]); // Re-run this effect when allAppointments changes
 
   return (
-    <div>
+    <main className="patient-home">
       {patientData ? (
-        <div>
-          <h4 style={{ color: 'blue', fontSize: '24px', fontWeight: 'bold', textAlign: 'center', margin: 90 }}>
-            Welcome {patientData.name}
-          </h4>
-
-          <div style={{ padding: '20px', textAlign: 'center' }}>
-            <p style={{ fontSize: '16px' }}>
-              Total Appointments: <strong>{appointmentsCount}</strong>
-            </p>
-          </div>
-
-          {upcomingAppointments.length > 0 && (
-            <div style={{ backgroundColor: '#ffeb3b', padding: '10px', borderRadius: '5px', margin: '20px auto', width: '80%' }}>
-              <h5 style={{ color: '#333', textAlign: 'center' }}>You have an appointment in the next hour!</h5>
-              <ul style={{ listStyleType: 'none', padding: 0 }}>
-                {upcomingAppointments.map((appt, index) => (
-                  <li key={index} style={{ padding: '5px 0' }}>
-                    <strong>Time:</strong> {new Date(appt.time).toLocaleTimeString()} | <strong>Doctor:</strong> {appt.doctorName}
-                  </li>
-                ))}
-              </ul>
+        <>
+          <section className="patient-welcome">
+            <div>
+              <p className="eyebrow">Patient overview</p>
+              <h1>Welcome, {patientData.name}</h1>
+              <p>Keep track of your care, appointments, and next steps from one place.</p>
             </div>
-          )}
-        </div>
-      ) : error ? (
-        <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+            <div className="patient-avatar">{patientData.name?.charAt(0).toUpperCase()}</div>
+          </section>
+          <section className="patient-summary-grid">
+            <div className="summary-card summary-card-primary"><span>Total appointments</span><strong>{appointmentsCount}</strong><small>All bookings</small></div>
+            <div className="summary-card"><span>Upcoming today</span><strong>{upcomingAppointments.length}</strong><small>Next hour</small></div>
+            <div className="summary-card"><span>Care status</span><strong>Active</strong><small>Account in good standing</small></div>
+          </section>
+          <section className="patient-next-card">
+            <div><p className="eyebrow">Next on your schedule</p><h2>{upcomingAppointments.length ? 'Appointment reminder' : 'Nothing scheduled right now'}</h2></div>
+            {upcomingAppointments.length > 0 ? <ul>{upcomingAppointments.map((appt, index) => <li key={index}><strong>{new Date(appt.time).toLocaleTimeString()}</strong><span>{appt.doctorName || 'Your care team'}</span></li>)}</ul> : <p className="empty-copy">Book an appointment when you are ready to plan your next visit.</p>}
+          </section>
+        </>
+      ) : error ? <p className="dashboard-error">{error}</p> : <p className="dashboard-loading">Loading your dashboard...</p>}
+    </main>
   );
 }

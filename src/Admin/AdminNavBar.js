@@ -7,6 +7,7 @@ import PageNotFound from '../Main/PageNotFound'
 import AdminHome from './AdminHome'
 import ViewPatients from './ViewPatients'
 import ViewDoctors from './ViewDoctors'
+import AdminProfile from './AdminProfile'
 
 
 
@@ -41,6 +42,7 @@ export default function AdminNavBar() {
       </div>
       <div className='sidebar'>
       <Link to='/adminhome'>Home</Link>
+      <Link to='/adminprofile'>Profile</Link>
       <Link to='/viewpatients'>View Patients</Link>
       <Link to='/viewdoctors'>View Doctors</Link>
       {/* <Link to='/deletedoctor'>Delete Doctors</Link>
@@ -50,6 +52,7 @@ export default function AdminNavBar() {
       <Routes>
         <Route path='/'Component={AdminHome}  exact/>
         <Route path='/adminhome' Component={AdminHome}  exact/>
+        <Route path='/adminprofile' Component={AdminProfile} exact/>
         <Route path='/viewpatients' element={<ViewPatients/>} exact/>
         <Route path='/viewdoctors' element={<ViewDoctors/>} exact/>
         <Route path='/' Component={Home}/>

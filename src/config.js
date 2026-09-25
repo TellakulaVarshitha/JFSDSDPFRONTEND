@@ -1,6 +1,7 @@
 const config=
 {
-    url:'https://hospitalbackend.up.railway.app'
+    //url:'https://hospitalbackend.up.railway.app'
+    url:'http://localhost:2220'
 };
 
     

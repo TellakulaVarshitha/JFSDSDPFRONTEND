@@ -1,624 +1,139 @@
-/* Reset and basic styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-  }
-
-  h2
-  {
-    color: #004080;
-  }
-  
-  /* Main container for header */
-  .header-container {
-    height: 60px; /* Adjust if your navbar height is different */
-    background-color: #003366; /* Navbar color */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 2;
-  }
-  
-  /* Header styling */
-  .app-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #004080;
-    color: #ffffff;
-  }
-  
-  /* Logo styling */
-  .app-logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-  }
-  
-  /* Tagline below logo */
-  .tagline {
-    font-size: 0.8rem;
-    font-weight: 300;
-    margin-top: 4px;
-    color: #ffffff;
-  }
-  
-  /* Navigation bar styling */
-  .nav-bar {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-bar a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .nav-bar a:hover {
-    color: #ffcc00;
-  }
-  /*sidebar*/
- 
-
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    
-    .content {
-      margin-left: 100px;
-    }
-  }
-  /* Hero Section */
-  .home-container {
-    text-align: center;
-  }
-  
-  .hero-section {
-    background-color: #004080;
-    color: #ffffff;
-    padding: 90px 20px;
-    position: relative;
-  }
-  
-  .hero-content {
-    max-width: 600px;
-    margin: 0 auto;
-    animation: fadeIn 1.2s ease-in-out;
-  }
-  
-  .hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .hero-section p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #ff9933;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #ffcc66;
-  }
-
-  .features {
-    display: flex;
-    justify-content: space-between;
-    background-color: #f2f2f2;
-    border-radius: 0px;
-  }
-  
-  .feature {
-    background-color: #f2f2f2; /* Removed background color */
-    padding: 10px;
-    border-radius: 10px;
-    flex-basis: 30%;
-  }
-  
-  .feature h3 {
-    font-size: 1.2rem;
-    margin-top: 10px;
-  }
-  
-  .icon {
-    font-size: 3rem;
-    color: #004d99;
-  }
-  
-  
-  /* Contact Section */
-  .contact-section {
-    padding: 40px 20px;
-    background-color: #f2f2f2;
-  }
-  
-  .contact-section h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #004080;
-  }
-  
-  .contact-section p {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: #555555;
-  }
-  
-  .contact-details {
-    margin-top: 20px;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  .contact-details p {
-    margin: 8px 20;
-  }
-
-  .services-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 80px;
-    text-align: center;
-  }
-  .service-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
-  
-  /* Card styles */
-  .service-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
-    margin: 10px 0;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .service-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .service-card h3 {
-    color: #004080;
-    margin-bottom: 10px;
-  }
-  
-  .service-card p {
-    color: #333;
-  }
-  
-  
-  .login-section {
-    display: flex;
-    justify-content: center;        
-    align-items: center;            
-    flex-grow: 1;                  
-    padding: 80px;                  
-    min-height: 60vh;               
-  }
-  
-  .login-content {
-    text-align: center;     
-      
-  }
-  
-  /* Login Form Styles */
-  .login-form {
-    padding: 80px;                 
-    background-color: white;
-    border-radius: 10px;
-    max-width: 600px;               
-    width: 100%;                  
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Button Styles */
-  .submit-button {
-    background-color: #003d66;      
-    color: white;                    
-    padding: 15px;                   
-    border: none;                    
-    border-radius: 5px;             
-    cursor: pointer;                 
-    transition: background-color 0.3s ease; 
-    width: 100%;                   
-  }
-  
-  /* Form Group Styles */
-  .form-group {
-    margin-bottom: 20px;            
-    text-align: left;               
-  }
-  
-  .form-group label {
-    display:inline-block;                  
-    font-size: 1rem;                
-    color: #004080;               
-    margin-bottom: 10px;            
-  }
-  
-  .form-group input {
-    width: 100%;                    
-    padding: 15px;                  
-    border: 1px solid #ccc;        
-    border-radius: 5px;            
-    font-size: 1rem;                
-  }
-  
-  /* Paragraph and Link Styles */
-  .signup-prompt {
-    margin-top: 18px;               
-    color: #333;                    
-  }
-
-  .signup-button {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #004080;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .signup-button:hover {
-    color:#ffcc00;
-  }
-
-  /* Container for the toggle switch */
-.toggle-buttons {
-  position: relative;
-  display: flex;
-  height: 32px;
-  width: 300px;
-  margin: 20px auto;
-  background: #D7D7D7;
-  border-radius: 32px;
-  overflow: hidden;
+:root {
+  --ink: #19324a;
+  --muted: #6d7d8c;
+  --paper: #f6f8f5;
+  --surface: #ffffff;
+  --line: #dce6e5;
+  --teal: #0b7a75;
+  --teal-dark: #075954;
+  --coral: #e87a5d;
+  --mint: #dff1eb;
+  --shadow: 0 18px 45px rgba(25, 50, 74, 0.1);
 }
-
-/* Individual toggle button labels */
-.toggle-button {
-  flex: 1;
-  
-  text-align: center;
-  line-height: 32px;
-  font-weight: bold;
-  color: #676a6c;
-  font-size: 12px;
-  cursor: pointer;
-  transition: color 0.15s ease-out;
-  position: relative;
-  z-index: 2;
-  text-decoration: none;
-}
-
-/* Active toggle button color and transition */
-.toggle-button.active {
-  color: #FFF;
-}
-
-/* Slider background */
-.toggle-selector {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 32px;
-  border-radius: 32px;
-  background-color: #004080; /* Initial color for Patient */
-  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-
-/* Color changes for each toggle option */
-.toggle-button.patient-login.active ~ .toggle-selector {
-  transform: translateX(0%);
-  background-color: #004080; /* Green */
-}
-.toggle-button.doctor-login.active ~ .toggle-selector {
-  transform: translateX(100%);
-  background-color: #004080; /* Orange */
-}
-.toggle-button.admin-login.active ~ .toggle-selector {
-  transform: translateX(200%);
-  background-color: #004080; /* Red */
-}
-
-.logoutbutton
-{
-  background-color:#004080 ;
-  border: none;
-  font-size: 1rem;
-  color: #ffffff;
-
-}
-.logoutbutton:hover
-{
-  color:#ffcc00 ;
-  background-color: #003366; 
-}
-
-/*Signup css*/
-.signup-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f2f2f2;
-  padding-top: 130px;
-}
-
-.signup-wrapper {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
-}
-
-.notification-message {
-  color: #d9534f;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.signup-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-field {
-  margin-bottom: 15px;
-}
-
-.form-field label {
-  display: block;
-  margin-bottom: 5px;
-  color: #004080;
-}
-
-.form-field input,
-.form-field select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.form-actions {
-  margin-top: 20px;
-}
-
-.form-actions button {
-  background-color: #004080;
-  color: white;
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-}
-
-.form-actions button:hover {
-  background-color: #003366;
-  color: #ffcc00;
-}
-@media (max-width: 1024px) {
-  .signup-wrapper {
-    padding: 20px;
-    max-width: 80%;
-  }
-  
-  /* Reduce font size for labels and form fields */
-  .form-field label {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .signup-section {
-    padding: 20px;
-    min-height: 90vh;
-  }
-
-  .signup-wrapper {
-    padding: 20px;
-    max-width: 90%;
-  }
-
-  .form-field label {
-    font-size: 0.85rem;
-  }
-
-  /* Adjust font size and padding for form elements */
-  .form-field input,
-  .form-field select {
-    padding: 8px;
-    font-size: 0.95rem;
-  }
-
-  .form-actions button {
-    padding: 12px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .signup-section {
-    padding: 15px;
-    min-height: 80vh;
-  }
-
-  .signup-wrapper {
-    padding: 15px;
-    max-width: 100%;
-  }
-
-  .form-field label {
-    font-size: 0.8rem;
-  }
-
-  .form-field input,
-  .form-field select {
-    padding: 8px;
-    font-size: 0.9rem;
-  }
-
-  .form-actions button {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-}
-  
-  
-  
-  
-  
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    /* Header */
-    .app-header {
-        padding: 10px 15px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    /* Navbar links */
-    .nav-bar a {
-        font-size: 0.9rem;
-    }
-
-    /* Service cards to fit two per row */
-    .service-card {
-        width: 45%;
-    }
-}
-  
-@media (max-width: 768px) {
-  /* Header */
-  .app-header {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  /* Reduce sidebar width for mobile */
-  
-  
-  /* Content area margin adjustment */
-  .content {
-      margin-left: 100px; /* Match sidebar width */
-  }
-
-  /* Reduce font size for hero section */
-  .hero-section h1 {
-      font-size: 2rem;
-  }
-
-  /* Contact section title size */
-  .contact-section h2 {
-      font-size: 1.8rem;
-  }
-
-  /* Service cards to full width on mobile */
-  .service-card {
-      width: 100%;
-  }
-
-  /* Adjust login and signup form widths */
-  .login-form, .signup-wrapper {
-      padding: 20px;
-      max-width: 90%; /* Reduce form width on small screens */
-  }
-}
-  
-@media (max-width: 480px) {
-  /* Adjust header padding and logo size */
-  .app-header {
-      padding: 10px;
-      align-items: center;
-  }
-
-  /* Logo and tagline */
-  .app-logo {
-      font-size: 1.5rem;
-  }
-
-  .tagline {
-      font-size: 0.75rem;
-  }
-
-  /* Navbar link adjustments */
-  .nav-bar a {
-      font-size: 0.8rem;
-      padding: 5px;
-  }
-
-  /* Adjust hero section font sizes */
-  .hero-section h1 {
-      font-size: 1.8rem;
-  }
-
-  /* Contact section heading size */
-  .contact-section h2 {
-      font-size: 1.6rem;
-  }
-
-  /* Adjust service row layout */
-  .service-row {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  /* Full-width service cards on small screens */
-  .service-card {
-      width: 100%;
-      margin-bottom: 20px;
-  }
-
-  /* Toggle button adjustments for mobile */
-  .toggle-buttons {
-      width: 100%; /* Expand toggle buttons to full width */
-  }
-
-  /* Login and Signup forms */
-  .login-form, .signup-wrapper {
-      padding: 20px;
-      width: 100%;
-  }
-}
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; }
+html { overflow-y: auto; }
+body { overflow-x: hidden; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Trebuchet MS", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; letter-spacing: 0; }
+a { color: inherit; }
+.header-container { height: 78px; position: fixed; inset: 0 0 auto; z-index: 10; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+.app-header { height: 100%; max-width: 1440px; margin: auto; padding: 0 42px; display: flex; align-items: center; justify-content: space-between; }
+.app-logo { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 1.45rem; font-weight: bold; letter-spacing: .08em; line-height: 1; }
+.tagline { margin: 7px 0 0; color: var(--muted); font-family: "Trebuchet MS", sans-serif; font-size: .68rem; font-weight: normal; letter-spacing: .11em; text-transform: uppercase; }
+.nav-bar { display: flex; align-items: center; gap: 30px; }
+.nav-bar a { color: var(--ink); font-size: .9rem; font-weight: bold; text-decoration: none; }
+.nav-bar a:hover { color: var(--teal); }
+.home-container { padding-top: 78px; text-align: center; }
+.hero-section { min-height: 540px; padding: 120px 24px 90px; display: grid; place-items: center; color: white; background: linear-gradient(115deg, rgba(7,89,84,.96), rgba(11,122,117,.78)), radial-gradient(circle at 80% 20%, #e87a5d 0, transparent 28%), #0b7a75; position: relative; overflow: hidden; }
+.hero-section::after { content: ""; width: 360px; height: 360px; position: absolute; right: -90px; bottom: -150px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; box-shadow: 0 0 0 30px rgba(255,255,255,.06), 0 0 0 60px rgba(255,255,255,.04); }
+.hero-content { max-width: 760px; position: relative; z-index: 1; animation: rise .7s ease both; }
+.hero-section h1 { margin-bottom: 18px; font-size: clamp(2.7rem, 6vw, 5.8rem); line-height: .98; }
+.hero-section p { color: #e6f6f1; font-size: 1.15rem; }
+.cta-button, .submit-button, .signup-button { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 0 24px; border: 0; border-radius: 6px; background: var(--coral); color: white; cursor: pointer; font: bold .9rem "Trebuchet MS", sans-serif; text-decoration: none; }
+.cta-button:hover, .submit-button:hover, .signup-button:hover { background: #d66348; color: white; }
+.contact-section { padding: 80px 24px; background: var(--surface); }
+.contact-section h2 { margin-bottom: 12px; color: var(--teal-dark); font-size: 2.3rem; }
+.contact-section > p { color: var(--muted); }
+.contact-details { max-width: 700px; margin: 30px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; text-align: left; }
+.contact-details p { margin: 0; padding: 18px; border-left: 3px solid var(--coral); background: #fbf6f2; color: var(--ink); }
+.services-container { max-width: 1180px; margin: auto; padding: 145px 28px 80px; }
+.services-container > h1 { margin-bottom: 42px; color: var(--teal-dark); font-size: 3.2rem; }
+.service-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.service-card { min-height: 190px; padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); text-align: left; transition: transform .2s ease, border-color .2s ease; }
+.service-card:hover { transform: translateY(-5px); border-color: var(--teal); }
+.service-card h3 { color: var(--teal); font-size: 1.35rem; }
+.service-card p { color: var(--muted); line-height: 1.6; }
+.login-page { min-height: 100vh; padding-top: 78px; background: linear-gradient(135deg, #e2f2ed 0%, var(--paper) 48%, #f8e8e0 100%); }
+.login-section { min-height: calc(100vh - 78px); display: grid; place-items: center; padding: 50px 20px; }
+.login-content { width: min(100%, 480px); text-align: center; }
+.login-content > h4 { min-height: 22px; color: #bd5844; }
+.toggle-buttons { width: 100%; height: 52px; display: flex; position: relative; margin: 24px 0 0; padding: 4px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.7); }
+.toggle-button { flex: 1; display: grid; place-items: center; z-index: 2; color: var(--muted); font-size: .84rem; font-weight: bold; text-decoration: none; }
+.toggle-button.active { color: white; }
+.toggle-selector { position: absolute; inset: 4px auto 4px 4px; width: calc(33.333% - 3px); border-radius: 5px; background: var(--teal); transition: transform .25s ease; }
+.doctor-login.active ~ .toggle-selector { transform: translateX(100%); }
+.admin-login.active ~ .toggle-selector { transform: translateX(200%); }
+.login-form, .signup-wrapper { width: 100%; padding: 34px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); text-align: left; }
+.form-group, .form-field { margin-bottom: 20px; }
+.form-group label, .form-field label { display: block; margin-bottom: 8px; color: var(--ink); font-size: .78rem; font-weight: bold; text-transform: uppercase; letter-spacing: .08em; }
+.form-group input, .form-field input, .form-field select { width: 100%; padding: 13px 14px; border: 1px solid var(--line); border-radius: 5px; background: #fbfdfc; color: var(--ink); font: inherit; outline: none; }
+.form-group input:focus, .form-field input:focus, .form-field select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px var(--mint); }
+.submit-button { width: 100%; background: var(--teal); }
+.signup-prompt { margin: 22px 0 8px; color: var(--muted); text-align: center; }
+.login-form .signup-button { width: 100%; background: transparent; color: var(--teal); border: 1px solid var(--teal); }
+.signup-section { min-height: 100vh; padding: 130px 20px 50px; display: grid; place-items: center; background: linear-gradient(135deg, #e2f2ed 0%, var(--paper) 48%, #f8e8e0 100%); }
+.signup-wrapper { max-width: 620px; }
+.signup-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.signup-form .form-actions, .signup-form button, .signup-form + p, .signup-form + p + a { grid-column: 1 / -1; }
+.form-actions button { width: 100%; border: 0; border-radius: 6px; padding: 14px; background: var(--teal); color: white; font: bold .9rem "Trebuchet MS", sans-serif; cursor: pointer; }
+.signup-wrapper > p { margin: 20px 0 0; color: var(--muted); text-align: center; }
+.signup-wrapper > a { display: block; margin-top: 8px; color: var(--teal); text-align: center; font-weight: bold; }
+.logoutbutton { width: calc(100% - 28px); margin: auto 14px 18px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.24); border-radius: 5px; background: transparent; color: white; cursor: pointer; font: inherit; text-align: left; }
+.logoutbutton:hover { background: rgba(255,255,255,.12); color: white; }
+.appointment-page, .upcoming-appointments { min-height: calc(100vh - 78px); margin-left: 238px; padding: 124px 42px 56px; background: var(--paper); }
+.appointment-page { display: flex; justify-content: center; align-items: flex-start; }
+.appointment-page .signup-wrapper { width: min(100%, 760px); max-width: 760px; }
+.upcoming-appointments h1 { margin-bottom: 10px; color: var(--teal-dark); font-size: clamp(2rem, 3vw, 3rem); }
+.appointments-header { display: flex; align-items: center; justify-content: space-between; margin: 0 0 20px; color: var(--muted); font-size: .9rem; font-weight: bold; }
+.table-container { width: 100%; max-width: none; overflow-x: auto; overflow-y: visible; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
+.appointment-table { width: 100%; min-width: 900px; table-layout: fixed; border-collapse: collapse; }
+.appointment-table th, .appointment-table td { width: auto; padding: 12px 9px; border-bottom: 1px solid var(--line); text-align: left; white-space: normal; overflow-wrap: anywhere; vertical-align: top; }
+.appointment-table th { background: var(--teal-dark); color: white; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.appointment-table td { color: var(--muted); font-size: .82rem; }
+.appointment-table tbody tr:hover { background: #f4faf8; }
+.appointment-table tbody tr:last-child td { border-bottom: 0; }
+.appointment-table .stacked-values > span { min-height: 40px; display: flex; align-items: center; padding: 2px 0; }
+.no-appointments { padding: 42px !important; color: var(--muted) !important; text-align: center !important; }
+.btn-prescription, .btn-cancel, .accept-button, .reject-button { min-height: 36px; padding: 0 12px; border: 0; border-radius: 5px; cursor: pointer; font: bold .76rem "Trebuchet MS", sans-serif; }
+.appointment-actions { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.appointment-actions .accept-button, .appointment-actions .reject-button { min-width: 62px; margin: 0; }
+.appointment-action-row { display: flex; align-items: center; gap: 6px; min-height: 40px; }
+.appointment-action-row .accept-button, .appointment-action-row .reject-button { min-width: 62px; margin: 0; }
+.btn-prescription, .accept-button { background: var(--teal); color: white; }
+.btn-cancel, .reject-button { background: #f2d9d1; color: #a94d3e; }
+.btn-prescription:disabled, .btn-cancel:disabled { cursor: not-allowed; opacity: .5; }
+.prescription-card { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(25,50,74,.45); }
+.card-content { width: min(100%, 520px); padding: 28px; border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
+.card-content h3 { color: var(--teal-dark); }
+.prescription-textarea { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--line); border-radius: 5px; resize: vertical; font: inherit; }
+.button-group { display: flex; gap: 10px; margin-top: 16px; }
+.btn-close { min-height: 40px; padding: 0 18px; border: 0; border-radius: 5px; background: var(--teal); color: white; cursor: pointer; font-weight: bold; }
+ .filter-box { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0; }
+.filter-box select { min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); font: inherit; }
+.patient-home { min-height: calc(100vh - 78px); margin-left: 238px; padding: 126px 42px 60px; }
+.patient-welcome { max-width: 1100px; margin: 0 auto 28px; padding: 34px 38px; display: flex; align-items: center; justify-content: space-between; border-radius: 8px; background: var(--teal-dark); color: white; box-shadow: var(--shadow); }
+.patient-welcome h1 { margin: 0 0 10px; color: white; font-size: clamp(2rem, 4vw, 3.5rem); }
+.patient-welcome p:not(.eyebrow) { margin: 0; color: #c9e9df; }
+.eyebrow { margin-bottom: 10px; color: var(--coral); font-size: .7rem; font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
+.patient-welcome .eyebrow { color: #a7ded1; }
+.patient-avatar, .admin-avatar { width: 64px; height: 64px; display: grid; flex: 0 0 auto; place-items: center; border: 2px solid rgba(255,255,255,.45); border-radius: 50%; background: rgba(255,255,255,.14); color: white; font: bold 1.8rem Georgia, serif; }
+.patient-summary-grid { max-width: 1100px; margin: 0 auto 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.summary-card { min-height: 142px; padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
+.summary-card span, .summary-card small { display: block; color: var(--muted); font-size: .82rem; }
+.summary-card strong { display: block; margin: 13px 0 7px; color: var(--teal-dark); font: bold 2.25rem Georgia, serif; }
+.summary-card-primary { border-top: 4px solid var(--coral); }
+.patient-next-card { max-width: 1100px; margin: 0 auto; padding: 28px 32px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
+.patient-next-card h2 { margin-bottom: 0; color: var(--teal-dark); }
+.patient-next-card ul { margin: 20px 0 0; padding: 0; display: grid; gap: 10px; list-style: none; }
+.patient-next-card li { padding: 14px 16px; display: flex; justify-content: space-between; border-left: 3px solid var(--coral); background: #fbf6f2; }
+.patient-next-card li span, .empty-copy { color: var(--muted); }
+.dashboard-error, .dashboard-loading { margin: 160px auto; color: var(--muted); text-align: center; }
+.profile-page { min-height: calc(100vh - 78px); margin-left: 238px; padding: 126px 42px 60px; }
+.profile-card-modern { width: min(100%, 760px); max-width: 760px; margin: 0 auto; padding: 38px; text-align: left; }
+.profile-card-modern h2 { margin-bottom: 24px; color: var(--teal-dark); font-size: 2.3rem; }
+.profile-card-modern .profile-icon { width: 132px; height: 132px; margin: 0 0 22px; }
+.profile-photo { width: 132px; height: 132px; overflow: hidden; border-radius: 50%; }
+.profile-card-modern .profile_image { display: block; width: 132px !important; height: 132px !important; border: 5px solid var(--surface); box-shadow: var(--shadow); }
+.picture-actions { margin: -6px 0 24px; }
+.picture-button { min-height: 38px; padding: 0 16px; border: 0; border-radius: 5px; background: var(--coral); color: white; cursor: pointer; font: bold .8rem "Trebuchet MS", sans-serif; box-shadow: 0 5px 14px rgba(25,50,74,.2); }
+.picture-button:hover { background: #d66348; transform: translateY(-2px); }
+.picture-button:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.profile-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.profile-info p { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.profile-info span, .profile-info strong { color: var(--teal); }
+.profile-card-modern .doctor-image { width: 132px; height: 132px; object-fit: cover; border: 5px solid var(--mint); }
+.admin-avatar { background: var(--coral); }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 760px) { .app-header { padding: 0 18px; } .nav-bar { gap: 14px; } .nav-bar a { font-size: .78rem; } .app-logo { font-size: 1.1rem; } .tagline { font-size: .55rem; } .service-row { grid-template-columns: 1fr; } .contact-details { grid-template-columns: 1fr; } .signup-form { grid-template-columns: 1fr; } .signup-form .form-actions, .signup-form button, .signup-form + p, .signup-form + p + a { grid-column: auto; } .appointment-page, .upcoming-appointments, .patient-home, .profile-page { margin-left: 0; padding: 170px 18px 36px; } .appointment-page .signup-wrapper { padding: 22px; } .appointments-header { align-items: flex-start; flex-direction: column; gap: 8px; } .appointment-table th, .appointment-table td { padding: 8px 4px; font-size: .68rem; } .btn-prescription, .btn-cancel, .accept-button, .reject-button { min-height: 30px; padding: 0 5px; font-size: .65rem; } .patient-welcome { align-items: flex-start; gap: 22px; padding: 26px; } .patient-welcome h1 { font-size: 2rem; } .patient-summary-grid { grid-template-columns: 1fr; } .patient-next-card { padding: 24px; } .patient-next-card li { align-items: flex-start; flex-direction: column; gap: 5px; } .profile-card-modern { padding: 26px; } .profile-info { grid-template-columns: 1fr; } }

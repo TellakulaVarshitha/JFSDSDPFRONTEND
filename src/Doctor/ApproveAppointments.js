@@ -5,6 +5,7 @@ import config from '../config'
 
 const ApproveAppointments = () => {
   const [appointments, setAppointments] = useState([]);
+  const [patientNames, setPatientNames] = useState({});
 
   // Get doctor ID from localStorage
   const storedDoctorData = localStorage.getItem('doctor');
@@ -14,7 +15,7 @@ const ApproveAppointments = () => {
     if (docid) {
       axios
         .get(`${config.url}/docappointments?docid=${docid}`)
-        .then((response) => {
+        .then(async (response) => {
           const now = new Date();
 
           // Filter to include only future appointments
@@ -28,36 +29,42 @@ const ApproveAppointments = () => {
           });
 
           setAppointments(futureAppointments);
+
+          const patientIds = [...new Set(futureAppointments.map((appointment) => appointment.patientid))];
+          const patientResponses = await Promise.all(
+            patientIds.map((id) => axios.get(`${config.url}/viewdocpatients?id=${id}`))
+          );
+          const namesById = {};
+          patientResponses.forEach((patientResponse) => {
+            const patients = Array.isArray(patientResponse.data)
+              ? patientResponse.data
+              : [patientResponse.data];
+            patients.forEach((patient) => {
+              if (patient && patient.id) {
+                namesById[patient.id] = patient.name;
+              }
+            });
+          });
+          setPatientNames(namesById);
         })
         .catch((error) => console.error('Error fetching appointments:', error));
     }
   }, [docid]);
 
-  const handleAccept = (id) => {
-    axios
-      .post(`${config.url}/updateappointmentstatus?id=${id}&status=Accepted`)
-      .then(() => {
-        alert('Appointment accepted successfully.');
-        setAppointments((prev) =>
-          prev.map((appointment) =>
-            appointment.id === id
-              ? { ...appointment, status: 'Accepted' }
-              : appointment
-          )
-        );
-      })
-      .catch((error) => console.error('Error updating appointment status:', error));
-  };
+  const updateAppointmentStatus = (group, status) => {
+    const appointmentIds = group.map((appointment) => appointment.id);
 
-  const handleReject = (id) => {
-    axios
-      .post(`${config.url}/updateappointmentstatus?id=${id}&status=Rejected`)
+    Promise.all(
+      appointmentIds.map((id) =>
+        axios.post(`${config.url}/updateappointmentstatus?id=${id}&status=${status}`)
+      )
+    )
       .then(() => {
-        alert('Appointment rejected successfully.');
+        alert(`Appointment${appointmentIds.length > 1 ? 's' : ''} ${status.toLowerCase()} successfully.`);
         setAppointments((prev) =>
           prev.map((appointment) =>
-            appointment.id === id
-              ? { ...appointment, status: 'Rejected' }
+            appointmentIds.includes(appointment.id)
+              ? { ...appointment, status }
               : appointment
           )
         );
@@ -69,12 +76,22 @@ const ApproveAppointments = () => {
   const pendingAppointments = appointments.filter(
     (appointment) => appointment.status === 'Doctor Approval Pending'
   );
+  const groupedAppointments = Object.values(
+    pendingAppointments.reduce((groups, appointment) => {
+      const groupKey = `${appointment.date}_${appointment.time}`;
+      if (!groups[groupKey]) {
+        groups[groupKey] = { date: appointment.date, time: appointment.time, appointments: [] };
+      }
+      groups[groupKey].appointments.push(appointment);
+      return groups;
+    }, {})
+  );
 
   return (
     <div className="upcoming-appointments">
       <h1>Upcoming Appointments</h1>
       <div className="table-container">
-        {pendingAppointments.length > 0 ? (
+        {groupedAppointments.length > 0 ? (
           <table className="appointment-table">
             <thead>
               <tr>
@@ -88,27 +105,57 @@ const ApproveAppointments = () => {
               </tr>
             </thead>
             <tbody>
-              {pendingAppointments.map((appointment) => (
-                <tr key={appointment.id}>
-                  <td>{appointment.id}</td>
-                  <td>{appointment.patientid}</td>
-                  <td>{appointment.date}</td>
-                  <td>{appointment.time}</td>
-                  <td>{appointment.email}</td>
-                  <td>{appointment.fees}</td>
-                  <td>
-                    <button
-                      className="accept-button"
-                      onClick={() => handleAccept(appointment.id)}
-                    >
-                      Accept
-                    </button>
-                    <button
-                      className="reject-button"
-                      onClick={() => handleReject(appointment.id)}
-                    >
-                      Reject
-                    </button>
+              {groupedAppointments.map((group) => (
+                <tr key={`${group.date}_${group.time}`}>
+                  <td className="stacked-values">
+                    {group.appointments.map((appointment) => (
+                      <span key={appointment.id}>{appointment.id}</span>
+                    ))}
+                  </td>
+                  <td className="stacked-values">
+                    {group.appointments.map((appointment) => (
+                      <span key={appointment.id}>
+                        {patientNames[appointment.patientid] || appointment.patientid}
+                      </span>
+                    ))}
+                  </td>
+                  <td className="stacked-values">
+                    {group.appointments.map((appointment) => (
+                      <span key={appointment.id}>{appointment.date}</span>
+                    ))}
+                  </td>
+                  <td className="stacked-values">
+                    {group.appointments.map((appointment) => (
+                      <span key={appointment.id}>{appointment.time}</span>
+                    ))}
+                  </td>
+                  <td className="stacked-values">
+                    {group.appointments.map((appointment) => (
+                      <span key={appointment.id}>{appointment.email}</span>
+                    ))}
+                  </td>
+                  <td className="stacked-values">
+                    {group.appointments.map((appointment) => (
+                      <span key={appointment.id}>{appointment.fees}</span>
+                    ))}
+                  </td>
+                  <td className="stacked-values">
+                    {group.appointments.map((appointment) => (
+                      <div className="appointment-action-row" key={appointment.id}>
+                        <button
+                          className="accept-button"
+                          onClick={() => updateAppointmentStatus([appointment], 'Accepted')}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          className="reject-button"
+                          onClick={() => updateAppointmentStatus([appointment], 'Rejected')}
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    ))}
                   </td>
                 </tr>
               ))}

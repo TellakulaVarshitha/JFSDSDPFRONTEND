@@ -13,34 +13,6 @@ export default function DoctorProfile() {
     // Get doctor ID from local storage and fetch data as before
     // ...
 
-    // Create moving balls
-    const ballContainer = document.createElement('div');
-    ballContainer.classList.add('background-container');
-    document.body.appendChild(ballContainer);
-
-    for (let i = 0; i < 20; i++) {
-      const ball = document.createElement('div');
-      ball.classList.add('ball');
-      ballContainer.appendChild(ball);
-    }
-
-    // Script for tracking mouse movement
-    const moveBalls = (e) => {
-      const balls = document.querySelectorAll('.ball');
-      balls.forEach((ball) => {
-        const x = e.clientX - ball.offsetWidth / 7;
-        const y = e.clientY - ball.offsetHeight / 2;
-        ball.style.transform = `translate(${x}px, ${y}px)`;
-      });
-    };
-
-    document.addEventListener('mousemove', moveBalls);
-
-    // Cleanup event listener and elements on component unmount
-    return () => {
-      document.removeEventListener('mousemove', moveBalls);
-      document.body.removeChild(ballContainer);
-    };
   }, []);
 
 
@@ -82,7 +54,8 @@ export default function DoctorProfile() {
   }, []);
 
   return (
-    <div className="profile-card">
+    <main className="profile-page">
+    <div className="profile-card profile-card-modern">
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {doctorData ? (
         <>
@@ -97,17 +70,21 @@ export default function DoctorProfile() {
               />
             </div>
           )}
+          <p className="eyebrow">Doctor profile</p>
+          <h2>{doctorData.name}</h2>
+          <div className="profile-info">
           <p><strong>Doctor ID:</strong> {doctorData.id}</p>
-          <p><strong>Full Name:</strong> {doctorData.name}</p>
           <p><strong>Specialization:</strong> {doctorData.specialization}</p>
           <p><strong>Email:</strong> {doctorData.email}</p>
           <p><strong>Contact:</strong> {doctorData.contact}</p>
           <p><strong>Experience:</strong> {doctorData.experience} years</p>
           <p><strong>Location:</strong> {doctorData.location}</p>
+          </div>
         </>
       ) : (
         <p>Loading doctor profile...</p>
       )}
     </div>
+    </main>
   );
 }

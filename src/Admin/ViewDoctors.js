@@ -84,8 +84,10 @@ export default function ViewDoctors() {
                    
                     <td>{doctor.password}</td>
                     <td>
-                      <button className='accept-button' onClick={() => handleStatus(doctor.email, 'Accepted')}>Accept</button>
-                      <button className='reject-button'  onClick={() => handleStatus(doctor.email, 'Rejected')}>Reject</button>
+                      <div className="appointment-actions">
+                        <button className='accept-button' onClick={() => handleStatus(doctor.email, 'Accepted')}>Accept</button>
+                        <button className='reject-button'  onClick={() => handleStatus(doctor.email, 'Rejected')}>Reject</button>
+                      </div>
                     </td>
                   </tr>
                 ))

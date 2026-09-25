@@ -49,6 +49,7 @@ export default function SignUp() {
       );
 
       if (response.data) {
+        console.log("Fetched booked slots:", response.data);
         filterAvailableSlots(response.data);
       }
     } catch (error) {
@@ -59,7 +60,11 @@ export default function SignUp() {
 
   const filterAvailableSlots = (bookedSlots) => {
     if (Array.isArray(bookedSlots)) {
-      const available = allSlots.filter((slot) => !bookedSlots.includes(slot));
+      const available = allSlots.filter(
+        (slot) => !bookedSlots.some(
+          (bookedSlot) => bookedSlot.substring(0, 5) === slot
+        )
+      );
       setAvailableSlots(available);
     } else {
       console.error("Invalid format for bookedSlots", bookedSlots);
@@ -136,7 +141,7 @@ export default function SignUp() {
   }, [patientData]);
 
   return (
-    <div className="signup-section">
+    <div className="appointment-page">
       <div className="signup-wrapper">
         {message && <p className="notification-message">{message}</p>}
         <form onSubmit={handleSubmit} className="signup-form">
