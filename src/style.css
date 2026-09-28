@@ -77,6 +77,11 @@ a { color: inherit; }
 .appointment-page .signup-wrapper { width: min(100%, 760px); max-width: 760px; }
 .upcoming-appointments h1 { margin-bottom: 10px; color: var(--teal-dark); font-size: clamp(2rem, 3vw, 3rem); }
 .appointments-header { display: flex; align-items: center; justify-content: space-between; margin: 0 0 20px; color: var(--muted); font-size: .9rem; font-weight: bold; }
+.doctor-status-menu { display: flex; flex-wrap: wrap; gap: 4px; margin: 22px 0 20px; border-bottom: 1px solid var(--line); }
+.doctor-status-menu button { min-height: 42px; padding: 0 16px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); cursor: pointer; font: bold .84rem "Trebuchet MS", sans-serif; transition: color .18s ease, border-color .18s ease, background .18s ease; }
+.doctor-status-menu button:hover { background: #edf6f3; color: var(--teal-dark); }
+.doctor-status-menu button.active { border-bottom-color: var(--coral); color: var(--teal-dark); }
+.doctor-status-menu button:focus-visible, .appointment-actions button:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 .table-container { width: 100%; max-width: none; overflow-x: auto; overflow-y: visible; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
 .appointment-table { width: 100%; min-width: 900px; table-layout: fixed; border-collapse: collapse; }
 .appointment-table th, .appointment-table td { width: auto; padding: 12px 9px; border-bottom: 1px solid var(--line); text-align: left; white-space: normal; overflow-wrap: anywhere; vertical-align: top; }
@@ -89,6 +94,10 @@ a { color: inherit; }
 .btn-prescription, .btn-cancel, .accept-button, .reject-button { min-height: 36px; padding: 0 12px; border: 0; border-radius: 5px; cursor: pointer; font: bold .76rem "Trebuchet MS", sans-serif; }
 .appointment-actions { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .appointment-actions .accept-button, .appointment-actions .reject-button { min-width: 62px; margin: 0; }
+.appointment-actions .accept-button { background: var(--teal); color: white; }
+.appointment-actions .accept-button:hover { background: var(--teal-dark); }
+.appointment-actions .reject-button { background: #f8e7e1; color: #9c4032; }
+.appointment-actions .reject-button:hover { background: #f1d3c9; }
 .appointment-action-row { display: flex; align-items: center; gap: 6px; min-height: 40px; }
 .appointment-action-row .accept-button, .appointment-action-row .reject-button { min-width: 62px; margin: 0; }
 .btn-prescription, .accept-button { background: var(--teal); color: white; }

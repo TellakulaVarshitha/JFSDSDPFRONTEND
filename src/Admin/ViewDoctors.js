@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './AdminNavBar';
-// import './ViewDoctors.css';
+import { useSearchParams } from 'react-router-dom';
 import config from '../config'
 
 export default function ViewDoctors() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requestedStatus = searchParams.get('status');
+  const selectedStatus = ['accepted', 'rejected', 'pending'].includes(requestedStatus)
+    ? requestedStatus
+    : 'accepted';
+  const statusByView = {
+    accepted: 'Accepted',
+    rejected: 'Rejected',
+    pending: 'Registered',
+  };
+  const visibleDoctors = doctors.filter(
+    (doctor) => doctor.status === statusByView[selectedStatus]
+  );
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -29,7 +41,6 @@ export default function ViewDoctors() {
       const response = await axios.put(`${config.url}/updatedocstatus?email=${email}&status=${status}`);
       alert(response.data); // Show success message from the server
 
-      // Update the doctor status in the local state
       setDoctors((prevDoctors) =>
         prevDoctors.map((doctor) =>
           doctor.email === email ? { ...doctor, status: status } : doctor
@@ -43,9 +54,22 @@ export default function ViewDoctors() {
   return (
     <div className="upcoming-appointments">
       <div className="view-appointments">
-        <h1>Doctors List</h1>
+        <h1>{selectedStatus === 'pending' ? 'Pending Doctors' : `${selectedStatus[0].toUpperCase()}${selectedStatus.slice(1)} Doctors`}</h1>
+        <nav className="doctor-status-menu" aria-label="Doctor status">
+          {['accepted', 'rejected', 'pending'].map((status) => (
+            <button
+              key={status}
+              type="button"
+              className={selectedStatus === status ? 'active' : ''}
+              aria-current={selectedStatus === status ? 'page' : undefined}
+              onClick={() => setSearchParams({ status })}
+            >
+              {status === 'pending' ? 'Pending Doctors' : `${status[0].toUpperCase()}${status.slice(1)} Doctors`}
+            </button>
+          ))}
+        </nav>
         <div className="appointments-header">
-        <span>Total Doctors: {doctors.length}</span>
+        <span>Total Doctors: {visibleDoctors.length}</span>
       </div>
         {loading ? (
           <p>Loading doctors...</p>
@@ -63,14 +87,13 @@ export default function ViewDoctors() {
                 <th>Email</th>
                 <th>Contact</th>
                 <th>Status</th>
-                <th>Password</th>
-                <th>Action</th>
+                {selectedStatus === 'pending' && <th>Action</th>}
                 
               </tr>
             </thead>
             <tbody>
-              {doctors.length > 0 ? (
-                doctors.map((doctor) => (
+              {visibleDoctors.length > 0 ? (
+                visibleDoctors.map((doctor) => (
                   <tr key={doctor.id}>
                     <td>{doctor.id}</td>
                     <td>{doctor.name}</td>
@@ -81,19 +104,19 @@ export default function ViewDoctors() {
                     <td>{doctor.email}</td>
                     <td>{doctor.contact}</td>
                     <td>{doctor.status}</td>
-                   
-                    <td>{doctor.password}</td>
-                    <td>
-                      <div className="appointment-actions">
-                        <button className='accept-button' onClick={() => handleStatus(doctor.email, 'Accepted')}>Accept</button>
-                        <button className='reject-button'  onClick={() => handleStatus(doctor.email, 'Rejected')}>Reject</button>
-                      </div>
-                    </td>
+                    {selectedStatus === 'pending' && (
+                      <td>
+                        <div className="appointment-actions">
+                          <button className='accept-button' onClick={() => handleStatus(doctor.email, 'Accepted')}>Accept</button>
+                          <button className='reject-button' onClick={() => handleStatus(doctor.email, 'Rejected')}>Reject</button>
+                        </div>
+                      </td>
+                    )}
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="12" align="center">No doctors found</td>
+                  <td colSpan={selectedStatus === 'pending' ? 10 : 9} align="center">No {selectedStatus} doctors found</td>
                 </tr>
               )}
             </tbody>

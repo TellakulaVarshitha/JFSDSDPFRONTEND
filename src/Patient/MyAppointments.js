@@ -6,6 +6,17 @@ export default function MyAppointments() {
   const [appointments, setAppointments] = useState([]);
   const [patientData, setPatientData] = useState(null);
   const [selectedPrescription, setSelectedPrescription] = useState(null);
+  const [statusFilter, setStatusFilter] = useState('All');
+  const statusOptions = [
+    { label: 'All Appointments', value: 'All' },
+    { label: 'Accepted', value: 'Accepted' },
+    { label: 'Cancelled', value: 'Cancel' },
+    { label: 'Rejected', value: 'Rejected' },
+    { label: 'Approval Pending', value: 'Doctor Approval Pending' },
+  ];
+  const visibleAppointments = statusFilter === 'All'
+    ? appointments
+    : appointments.filter((appointment) => appointment.status === statusFilter);
 
   // Retrieve patient data from localStorage
   useEffect(() => {
@@ -34,7 +45,7 @@ export default function MyAppointments() {
   const handleActionClick = async (appointmentId) => {
     try {
       await axios.post(`${config.url}/cancelappointment?aid=${appointmentId}`);
-      fetchData(); // Refresh the appointments list after cancellation
+      await fetchData();
     } catch (error) {
       console.error('Error canceling appointment:', error.message);
     }
@@ -56,8 +67,22 @@ export default function MyAppointments() {
     <div className="upcoming-appointments">
       <h1> Appointments</h1>
       <div className="appointments-header">
-        <span>Total Appointments: {appointments.length}</span>
+        <span>Total Appointments: {visibleAppointments.length}</span>
       </div>
+
+      <nav className="doctor-status-menu patient-appointment-status-menu" aria-label="Filter appointments by status">
+        {statusOptions.map((option) => (
+          <button
+            key={option.value}
+            type="button"
+            className={statusFilter === option.value ? 'active' : ''}
+            aria-pressed={statusFilter === option.value}
+            onClick={() => setStatusFilter(option.value)}
+          >
+            {option.label}
+          </button>
+        ))}
+      </nav>
 
       <div className={`table-container ${selectedPrescription ? 'blur-background' : ''}`}>
         <table className="appointment-table">
@@ -75,8 +100,8 @@ export default function MyAppointments() {
             </tr>
           </thead>
           <tbody>
-            {appointments.length > 0 ? (
-              appointments.map((appointment) => (
+            {visibleAppointments.length > 0 ? (
+              visibleAppointments.map((appointment) => (
                 <tr key={appointment.id}>
                   <td>{appointment.id}</td>
                   <td>{appointment.email}</td>
@@ -86,7 +111,9 @@ export default function MyAppointments() {
                   <td>{appointment.fees}</td>
                   <td>{appointment.status}</td>
                   <td>
-                    {appointment.status === 'Cancel' || appointment.status === 'Rejected' ? (
+                    {appointment.status === 'Cancel' ? (
+                      <span className="empty-copy">Not available</span>
+                    ) : appointment.status === 'Rejected' ? (
                       <button className="btn-prescription" disabled>
                         No Prescription
                       </button>
@@ -100,7 +127,9 @@ export default function MyAppointments() {
                     )}
                   </td>
                   <td>
-                    {appointment.status === 'Cancel' || appointment.status === 'Rejected' ? (
+                    {appointment.status === 'Cancel' ? (
+                      <span className="empty-copy">Cancelled</span>
+                    ) : appointment.status === 'Rejected' ? (
                       <button className="btn-cancel" disabled>
                         Cancel
                       </button>

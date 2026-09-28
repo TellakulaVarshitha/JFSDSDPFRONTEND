@@ -3,6 +3,19 @@ import axios from 'axios';
 import './doctorcss/upcomingappointments.css';
 import config from '../config';
 
+const appointmentStatusOptions = [
+  { label: 'All Appointments', value: 'All' },
+  { label: 'Accepted', value: 'Accepted' },
+  { label: 'Completed', value: 'Completed' },
+  { label: 'Cancelled', value: 'Cancel' },
+  { label: 'Rejected', value: 'Rejected' },
+];
+
+const monthOptions = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
 export default function ViewAppointments() {
   const [appointments, setAppointments] = useState([]);
   const [filteredAppointments, setFilteredAppointments] = useState([]);
@@ -77,7 +90,7 @@ export default function ViewAppointments() {
 
     // Filter by month
     if (monthFilter !== 'All') {
-      const selectedMonth = new Date(monthFilter).getMonth(); // Get month number (0 - 11)
+      const selectedMonth = Number(monthFilter);
       filtered = filtered.filter((appointment) => {
         const appointmentMonth = new Date(appointment.date).getMonth();
         return appointmentMonth === selectedMonth;
@@ -97,33 +110,31 @@ export default function ViewAppointments() {
 
   return (
     <div className="upcoming-appointments">
-      <h1>Upcoming Appointments</h1>
+      <h1>All Appointments</h1>
 
-      {/* Filter Box */}
-      <div className="filter-box">
-        <select onChange={(e) => setStatusFilter(e.target.value)} value={statusFilter}>
-          <option value="All">All Statuses</option>
-          <option value="Accepted">Pending</option>
-          <option value="Completed">Completed</option>
-          <option value="Cancel">Cancelled</option>
-          <option value="Rejected">Rejected</option>
-        </select>
+      <div className="appointment-filters">
+        <nav className="doctor-status-menu" aria-label="Filter appointments by status">
+          {appointmentStatusOptions.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              className={statusFilter === option.value ? 'active' : ''}
+              aria-pressed={statusFilter === option.value}
+              onClick={() => setStatusFilter(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </nav>
 
+        <div className="filter-box">
         <select onChange={(e) => setMonthFilter(e.target.value)} value={monthFilter}>
           <option value="All">All Months</option>
-          <option value="2024-01-01">January</option>
-          <option value="2024-02-01">February</option>
-          <option value="2024-03-01">March</option>
-          <option value="2024-04-01">April</option>
-          <option value="2024-05-01">May</option>
-          <option value="2024-06-01">June</option>
-          <option value="2024-07-01">July</option>
-          <option value="2024-08-01">August</option>
-          <option value="2024-09-01">September</option>
-          <option value="2024-10-01">October</option>
-          <option value="2024-11-01">November</option>
-          <option value="2024-12-01">December</option>
+          {monthOptions.map((month, index) => (
+            <option key={month} value={index}>{month}</option>
+          ))}
         </select>
+        </div>
       </div>
 
       <div className="appointments-header">

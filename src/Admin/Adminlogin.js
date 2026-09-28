@@ -27,7 +27,7 @@ export default function AdminLogin({ onAdminLogin }) {
      
       const response = await axios.post(`${config.url}/adminlogin`, data);
      
-      if (response.data) {
+      if (response.data==="Admin Logged in successfully") {
         onAdminLogin();
 
         // Store admin data in localStorage

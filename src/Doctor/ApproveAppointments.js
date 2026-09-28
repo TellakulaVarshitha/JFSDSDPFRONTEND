@@ -3,6 +3,12 @@ import axios from 'axios';
 import './doctorcss/upcomingappointments.css';
 import config from '../config'
 
+const getAppointmentDateTime = (appointment) => {
+  const [year, month, day] = appointment.date.split('-').map(Number);
+  const [hour, minute] = appointment.time.split(':').map(Number);
+  return new Date(year, month - 1, day, hour, minute);
+};
+
 const ApproveAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [patientNames, setPatientNames] = useState({});
@@ -12,43 +18,66 @@ const ApproveAppointments = () => {
   const docid = storedDoctorData ? JSON.parse(storedDoctorData).id : null;
 
   useEffect(() => {
-    if (docid) {
-      axios
-        .get(`${config.url}/docappointments?docid=${docid}`)
-        .then(async (response) => {
-          const now = new Date();
+    if (!docid) return undefined;
 
-          // Filter to include only future appointments
-          const futureAppointments = response.data.filter((appointment) => {
-            const [year, month, day] = appointment.date.split('-').map(Number); // Split date as YYYY-MM-DD
-            const [hour, minute] = appointment.time.split(':').map(Number); // Split time as HH:mm
+    let isMounted = true;
+    const loadAppointments = async () => {
+      try {
+        const response = await axios.get(`${config.url}/docappointments?docid=${docid}`);
+        const now = new Date();
+        const expiredPendingAppointments = response.data.filter(
+          (appointment) => appointment.status === 'Doctor Approval Pending'
+            && getAppointmentDateTime(appointment) <= now
+        );
+        const statusResults = await Promise.allSettled(
+          expiredPendingAppointments.map((appointment) =>
+            axios.post(
+              `${config.url}/updateappointmentstatus?id=${appointment.id}&status=${encodeURIComponent('Doctor Not Approved')}`
+            )
+          )
+        );
+        const updatedAppointmentIds = new Set(
+          expiredPendingAppointments
+            .filter((appointment, index) => statusResults[index].status === 'fulfilled')
+            .map((appointment) => appointment.id)
+        );
+        const processedAppointments = response.data.map((appointment) =>
+          updatedAppointmentIds.has(appointment.id)
+            ? { ...appointment, status: 'Doctor Not Approved' }
+            : appointment
+        );
+        const futureAppointments = processedAppointments.filter(
+          (appointment) => getAppointmentDateTime(appointment) > now
+        );
 
-            const appointmentDateTime = new Date(year, month - 1, day, hour, minute);
+        if (!isMounted) return;
+        setAppointments(futureAppointments);
 
-            return appointmentDateTime > now;
+        const patientIds = [...new Set(futureAppointments.map((appointment) => appointment.patientid))];
+        const patientResponses = await Promise.all(
+          patientIds.map((id) => axios.get(`${config.url}/viewdocpatients?id=${id}`))
+        );
+        const namesById = {};
+        patientResponses.forEach((patientResponse) => {
+          const patients = Array.isArray(patientResponse.data)
+            ? patientResponse.data
+            : [patientResponse.data];
+          patients.forEach((patient) => {
+            if (patient && patient.id) {
+              namesById[patient.id] = patient.name;
+            }
           });
+        });
+        if (isMounted) setPatientNames(namesById);
+      } catch (error) {
+        console.error('Error fetching appointments:', error);
+      }
+    };
 
-          setAppointments(futureAppointments);
-
-          const patientIds = [...new Set(futureAppointments.map((appointment) => appointment.patientid))];
-          const patientResponses = await Promise.all(
-            patientIds.map((id) => axios.get(`${config.url}/viewdocpatients?id=${id}`))
-          );
-          const namesById = {};
-          patientResponses.forEach((patientResponse) => {
-            const patients = Array.isArray(patientResponse.data)
-              ? patientResponse.data
-              : [patientResponse.data];
-            patients.forEach((patient) => {
-              if (patient && patient.id) {
-                namesById[patient.id] = patient.name;
-              }
-            });
-          });
-          setPatientNames(namesById);
-        })
-        .catch((error) => console.error('Error fetching appointments:', error));
-    }
+    loadAppointments();
+    return () => {
+      isMounted = false;
+    };
   }, [docid]);
 
   const updateAppointmentStatus = (group, status) => {
